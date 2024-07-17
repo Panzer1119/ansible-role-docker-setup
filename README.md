@@ -29,5 +29,13 @@ This Ansible role installs and configures Docker with optional ZFS and logging c
 ## Example Playbook
 
 ```yaml
-#TODO
+- hosts: all
+  become: yes
+  vars:
+    use_gelf_logging: true
+    use_full_container_id: true
+    use_zfs_storage_driver: true
+    use_zfs_volume_plugin: true
+  roles:
+    - ansible-role-docker-setup
 ```
