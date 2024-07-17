@@ -2,6 +2,12 @@
 
 This Ansible role installs and configures Docker with optional ZFS and logging configurations.
 
+## Installation
+
+```bash
+ansible-galaxy role install Panzer1119.docker-setup
+```
+
 ## Variables
 
 ### Logging
