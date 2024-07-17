@@ -23,6 +23,7 @@ This Ansible role installs and configures Docker with optional ZFS and logging c
 
 - `use_zfs_volume_plugin`: Whether to use ZFS as Docker volume plugin (default: `false`)
 - `docker_zfs_plugin_version`: Version of the Docker volume plugin (default: `v1.0.5`)
+- `docker_zfs_plugin_github_repo`: GitHub user/repository for the Docker ZFS plugin (default: `TrilliumIT/docker-zfs-plugin`)
 - `zfs_docker_volume_plugin_dataset`: ZFS dataset for Docker volumes (default: `"docker/volumes"`)
 
 ## Example Playbook
