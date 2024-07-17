@@ -39,3 +39,9 @@ This Ansible role installs and configures Docker with optional ZFS and logging c
   roles:
     - ansible-role-docker-setup
 ```
+
+Test it with the following command:
+
+```bash
+ansible-playbook -i inventory playbook.yml -CD
+```
