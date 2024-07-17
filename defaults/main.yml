@@ -2,6 +2,7 @@
 # Default variables for Docker setup
 use_gelf_logging: false
 gelf_address: "tcp://graylog:12201"
+use_full_container_id: false
 
 zfs_pool_name: "docker"
 
