@@ -1,0 +1,19 @@
+---
+# Tasks for installing and configuring Docker
+- name: Install Docker
+  apt:
+    name: docker.io
+    state: present
+  become: yes
+  #FIXME Do this properly
+
+- name: Create Docker daemon configuration directory
+  file:
+    path: /etc/docker
+    state: directory
+
+- name: Configure Docker daemon
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+  notify: Restart Docker

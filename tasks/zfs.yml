@@ -1,0 +1,36 @@
+---
+# Tasks for installing and configuring ZFS for Docker
+- name: Install ZFS utilities
+  apt:
+    name: zfsutils-linux
+    state: present
+  when: use_zfs_storage_driver or use_zfs_volume_plugin
+  become: yes
+
+- name: Configure ZFS storage driver
+  command: zfs create {{ zfs_docker_storage_driver_dataset }}
+  when: use_zfs_storage_driver
+  become: yes
+  #FIXME Also create zfs_docker_volume_plugin_dataset
+
+- name: Download Docker ZFS plugin
+  get_url:
+    url: "https://github.com/TrilliumIT/docker-zfs-plugin/releases/download/{{ docker_zfs_plugin_version }}/docker-zfs-plugin"
+    dest: /usr/local/bin/docker-zfs-plugin
+    mode: '0755'
+  when: use_zfs_volume_plugin
+
+- name: Copy Docker ZFS plugin service file
+  copy:
+    src: docker-zfs-plugin.service
+    dest: /etc/systemd/system/docker-zfs-plugin.service
+  when: use_zfs_volume_plugin
+
+- name: Start and enable Docker ZFS plugin service
+  systemd:
+    daemon_reload: yes
+    name: docker-zfs-plugin
+    enabled: yes
+    state: started
+  when: use_zfs_volume_plugin
+  notify: Reload systemd and start docker-zfs-plugin

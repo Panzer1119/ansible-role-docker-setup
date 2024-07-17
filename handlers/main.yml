@@ -1,2 +1,13 @@
 ---
-# handlers file for ansible-role-docker-setup
+# Handlers for Docker setup
+- name: Restart Docker
+  service:
+    name: docker
+    state: restarted
+
+- name: Reload systemd and start docker-zfs-plugin
+  systemd:
+    daemon_reload: yes
+    name: docker-zfs-plugin
+    enabled: yes
+    state: started

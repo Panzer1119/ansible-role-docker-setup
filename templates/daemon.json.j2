@@ -1,0 +1,10 @@
+{
+  "log-driver": "{{ 'gelf' if use_gelf_logging else 'json-file' }}"{% if use_gelf_logging %},
+  "log-opts": {
+    "gelf-address": "{{ gelf_address }}"
+  }{% endif %}{% if use_zfs_storage_driver %},
+  "storage-driver": "zfs",
+  "storage-opts": [
+    "zfs.fsname={{ zfs_docker_storage_driver_dataset }}"
+  ]{% endif %}
+}
