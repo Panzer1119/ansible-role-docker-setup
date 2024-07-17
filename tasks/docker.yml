@@ -1,11 +1,33 @@
 ---
 # Tasks for installing and configuring Docker
-- name: Install Docker
+- name: Ensure apt-transport-https is installed
   apt:
-    name: docker.io
+    name: apt-transport-https
     state: present
   become: yes
-  #FIXME Do this properly
+
+- name: Add Docker GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  become: yes
+
+- name: Add Docker repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+    state: present
+  become: yes
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Install Docker
+  apt:
+    name: docker-ce
+    state: present
+  become: yes
 
 - name: Create Docker daemon configuration directory
   file:
@@ -17,3 +39,10 @@
     src: daemon.json.j2
     dest: /etc/docker/daemon.json
   notify: Restart Docker
+
+- name: Start and enable Docker service
+  systemd:
+    name: docker
+    enabled: yes
+    state: started
+  become: yes
