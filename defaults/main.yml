@@ -10,6 +10,7 @@ use_zfs_volume_plugin: false
 gelf_address: "tcp://graylog:12201"
 
 docker_zfs_pool_name: "docker"
+docker_var_lib_zfs_dataset_name: "state"
 docker_storage_driver_zfs_dataset_name: "layers"
 docker_volume_plugin_zfs_dataset_name: "volumes"
 
