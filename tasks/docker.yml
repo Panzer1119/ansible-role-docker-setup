@@ -33,9 +33,11 @@
   file:
     path: /etc/docker
     state: directory
+  become: yes
 
 - name: Configure Docker daemon
   template:
     src: daemon.json.j2
     dest: /etc/docker/daemon.json
+  become: yes
   notify: "Restart docker service"
