@@ -7,6 +7,12 @@
   when: use_zfs_storage_driver or use_zfs_volume_plugin
   become: yes
 
+- name: Create Docker ZFS Pool
+  command: zpool create -f {{ docker_zfs_pool_name }} {{ docker_zfs_pool_devices }}
+  when: use_zfs_storage_driver or use_zfs_volume_plugin
+  become: yes
+  ignore_errors: yes
+
 - name: Create Docker var lib ZFS dataset
   community.general.zfs:
     name: "{{ docker_zfs_pool_name }}/{{ docker_var_lib_zfs_dataset_name }}"
