@@ -41,3 +41,10 @@
     dest: /etc/docker/daemon.json
   become: yes
   notify: "Restart docker service"
+
+- name: Add user to Docker group
+  ansible.builtin.user:
+    name: "{{ user }}"
+    groups: docker
+    append: yes
+  become: yes

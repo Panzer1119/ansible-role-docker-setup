@@ -1,5 +1,7 @@
 ---
 # Default variables for Docker setup
+user: "panzer1119"
+
 use_gelf_logging: false
 use_full_container_id: false
 use_zfs_storage_driver: false
