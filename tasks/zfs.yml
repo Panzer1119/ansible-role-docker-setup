@@ -8,12 +8,16 @@
   become: yes
 
 - name: Configure ZFS storage driver
-  command: zfs create "{{ docker_zfs_pool_name }}/{{ docker_storage_driver_zfs_dataset_name }}"
+  community.general.zfs:
+    name: "{{ docker_zfs_pool_name }}/{{ docker_storage_driver_zfs_dataset_name }}"
+    state: present
   when: use_zfs_storage_driver
   become: yes
 
 - name: Configure ZFS volume plugin
-  command: zfs create "{{ docker_zfs_pool_name }}/{{ docker_volume_plugin_zfs_dataset_name }}"
+  community.general.zfs:
+    name: "{{ docker_zfs_pool_name }}/{{ docker_volume_plugin_zfs_dataset_name }}"
+    state: present
   when: use_zfs_volume_plugin
   become: yes
 
