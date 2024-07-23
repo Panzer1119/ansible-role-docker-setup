@@ -4,12 +4,10 @@
   apt:
     name: zfsutils-linux
     state: present
-  when: use_zfs_storage_driver or use_zfs_volume_plugin
   become: yes
 
 - name: Create Docker ZFS Pool
   command: zpool create -f {{ docker_zfs_pool_name }} {{ docker_zfs_pool_devices }}
-  when: use_zfs_storage_driver or use_zfs_volume_plugin
   become: yes
   ignore_errors: yes
 
@@ -19,7 +17,6 @@
     state: present
     extra_zfs_properties:
       mountpoint: "/var/lib/docker"
-  when: use_zfs_storage_driver or use_zfs_volume_plugin
   become: yes
 
 - name: Create Docker storage driver ZFS dataset
