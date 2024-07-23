@@ -38,11 +38,4 @@
   template:
     src: daemon.json.j2
     dest: /etc/docker/daemon.json
-  notify: Restart Docker
-
-- name: Start and enable Docker service
-  systemd:
-    name: docker
-    enabled: yes
-    state: started
-  become: yes
+  notify: "Restart docker service"

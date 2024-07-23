@@ -1,13 +1,17 @@
 ---
 # Handlers for Docker setup
-- name: Restart Docker
-  service:
+- name: "Restart docker service"
+  systemd:
+    daemon_reload: yes
     name: docker
+    enabled: yes
     state: restarted
+  become: yes
 
-- name: Reload systemd and start docker-zfs-plugin
+- name: "Restart docker-zfs-plugin service"
   systemd:
     daemon_reload: yes
     name: docker-zfs-plugin
     enabled: yes
-    state: started
+    state: restarted
+  become: yes

@@ -35,4 +35,4 @@
     dest: /etc/systemd/system/docker-zfs-plugin.service
   when: use_zfs_volume_plugin
   become: yes
-  notify: Reload systemd and start docker-zfs-plugin
+  notify: "Restart docker-zfs-plugin service"
