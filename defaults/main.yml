@@ -15,6 +15,5 @@ docker_var_lib_zfs_dataset_name: "state"
 docker_storage_driver_zfs_dataset_name: "layers"
 docker_volume_plugin_zfs_dataset_name: "volumes"
 
-docker_zfs_plugin_version: "v1.0.5"
-#FIXME Use my own repo
-docker_zfs_plugin_github_repo: "TrilliumIT/docker-zfs-plugin"
+docker_zfs_plugin_version: "v1.1.1"
+docker_zfs_plugin_github_repo: "Panzer1119/docker-zfs-plugin"
