@@ -23,7 +23,7 @@ ansible-galaxy role install Panzer1119.docker-setup
 #### ZFS Storage Driver
 
 - `use_zfs_storage_driver`: Whether to use ZFS as Docker storage driver (default: `false`)
-- `docker_storage_driver_zfs_dataset`: ZFS dataset for Docker storage (default: `"docker/storage"`)
+- `docker_storage_driver_zfs_dataset`: ZFS dataset for Docker storage (default: `"docker/layers"`)
 
 #### ZFS Volume Plugin
 
