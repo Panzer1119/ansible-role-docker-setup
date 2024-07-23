@@ -29,17 +29,10 @@
   when: use_zfs_volume_plugin
   become: yes
 
-- name: Copy Docker ZFS plugin service file
-  copy:
-    src: docker-zfs-plugin.service
+- name: Configure Docker ZFS plugin service
+  template:
+    src: docker-zfs-plugin.service.j2
     dest: /etc/systemd/system/docker-zfs-plugin.service
   when: use_zfs_volume_plugin
-
-- name: Start and enable Docker ZFS plugin service
-  systemd:
-    daemon_reload: yes
-    name: docker-zfs-plugin
-    enabled: yes
-    state: started
-  when: use_zfs_volume_plugin
+  become: yes
   notify: Reload systemd and start docker-zfs-plugin
