@@ -18,19 +18,19 @@ ansible-galaxy role install Panzer1119.docker-setup
 
 ### ZFS
 
-- `zfs_pool_name`: ZFS pool name (default: `"docker"`)
+- `docker_zfs_pool_name`: ZFS pool name (default: `"docker"`)
 
 #### ZFS Storage Driver
 
 - `use_zfs_storage_driver`: Whether to use ZFS as Docker storage driver (default: `false`)
-- `zfs_docker_storage_driver_dataset`: ZFS dataset for Docker storage (default: `"docker/storage"`)
+- `docker_storage_driver_zfs_dataset`: ZFS dataset for Docker storage (default: `"docker/storage"`)
 
 #### ZFS Volume Plugin
 
 - `use_zfs_volume_plugin`: Whether to use ZFS as Docker volume plugin (default: `false`)
 - `docker_zfs_plugin_version`: Version of the Docker volume plugin (default: `v1.0.5`)
 - `docker_zfs_plugin_github_repo`: GitHub user/repository for the Docker ZFS plugin (default: `TrilliumIT/docker-zfs-plugin`)
-- `zfs_docker_volume_plugin_dataset`: ZFS dataset for Docker volumes (default: `"docker/volumes"`)
+- `docker_volume_plugin_zfs_dataset`: ZFS dataset for Docker volumes (default: `"docker/volumes"`)
 
 ## Example Playbook
 

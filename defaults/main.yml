@@ -4,12 +4,12 @@ use_gelf_logging: false
 gelf_address: "tcp://graylog:12201"
 use_full_container_id: false
 
-zfs_pool_name: "docker"
+docker_zfs_pool_name: "docker"
 
 use_zfs_storage_driver: false
-zfs_docker_storage_driver_dataset: "docker/storage"
+docker_storage_driver_zfs_dataset: "docker/storage"
 
 use_zfs_volume_plugin: false
 docker_zfs_plugin_version: "v1.0.5"
 docker_zfs_plugin_github_repo: "TrilliumIT/docker-zfs-plugin"
-zfs_docker_volume_plugin_dataset: "docker/volumes"
+docker_volume_plugin_zfs_dataset: "docker/volumes"

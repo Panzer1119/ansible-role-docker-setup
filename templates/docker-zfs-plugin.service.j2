@@ -4,10 +4,10 @@ After=zfs-mount.service zfs-import-cache.service
 Before=docker.service
 Requires=zfs-mount.service zfs-import-cache.service
 
-ConditionPathIsMountPoint="/{{ zfs_docker_volume_plugin_dataset }}"
+ConditionPathIsMountPoint="/{{ docker_volume_plugin_zfs_dataset }}"
 
 [Service]
-ExecStart=/usr/local/bin/docker-zfs-plugin --dataset-name "{{ zfs_docker_volume_plugin_dataset }}"
+ExecStart=/usr/local/bin/docker-zfs-plugin --dataset-name "{{ docker_volume_plugin_zfs_dataset }}"
 
 [Install]
 WantedBy=docker.service

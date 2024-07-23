@@ -10,6 +10,6 @@
   }{% endif %}{% if use_zfs_storage_driver %},
   "storage-driver": "zfs",
   "storage-opts": [
-    "zfs.fsname={{ zfs_docker_storage_driver_dataset }}"
+    "zfs.fsname={{ docker_storage_driver_zfs_dataset }}"
   ]{% endif %}
 }

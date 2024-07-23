@@ -8,12 +8,12 @@
   become: yes
 
 - name: Configure ZFS storage driver
-  command: zfs create {{ zfs_docker_storage_driver_dataset }}
+  command: zfs create {{ docker_storage_driver_zfs_dataset }}
   when: use_zfs_storage_driver
   become: yes
 
 - name: Configure ZFS volume plugin
-  command: zfs create {{ zfs_docker_volume_plugin_dataset }}
+  command: zfs create {{ docker_volume_plugin_zfs_dataset }}
   when: use_zfs_volume_plugin
   become: yes
 
