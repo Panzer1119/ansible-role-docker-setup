@@ -1,6 +1,6 @@
 ---
 # Main tasks file
-- include_tasks: docker.yml
-
 - include_tasks: zfs.yml
   when: use_zfs_storage_driver or use_zfs_volume_plugin
+
+- include_tasks: docker.yml
