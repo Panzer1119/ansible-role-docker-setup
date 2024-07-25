@@ -1,7 +1,7 @@
 ---
 # Tasks for installing and configuring Sanoid for ZFS
-- name: Check if Sanoid is installed
-  command: dpkg-query -W sanoid
+- name: Check if Sanoid is installed (and check with grep for the version and fail if not wrong version)
+  command: dpkg-query -W sanoid | grep -q "{{ sanoid_version }}" || echo "sanoid not installed or wrong version"
   register: sanoid_check_deb
   failed_when: sanoid_check_deb.rc > 1
   changed_when: sanoid_check_deb.rc == 1
