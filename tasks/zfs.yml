@@ -43,6 +43,16 @@
   when: use_zfs_volume_plugin
   become: yes
 
+- name: Create Docker volume parent ZFS datasets
+  community.general.zfs:
+    name: "{{ docker_zfs_pool_name }}/{{ docker_volume_plugin_zfs_dataset_name }}/{{ item }}"
+    state: present
+    extra_zfs_properties:
+      mountpoint: "/{{ docker_zfs_pool_name }}/{{ docker_volume_plugin_zfs_dataset_name }}/{{ item }}"
+  loop: "{{ docker_volume_parent_zfs_dataset_names }}"
+  when: use_zfs_volume_plugin
+  become: yes
+
 - name: Download Docker ZFS plugin binary
   get_url:
     url: "https://github.com/{{ docker_zfs_plugin_github_repo }}/releases/download/v{{ docker_zfs_plugin_version }}/docker-zfs-plugin"

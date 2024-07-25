@@ -15,6 +15,10 @@ docker_zfs_pool_devices: "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0"
 docker_var_lib_zfs_dataset_name: "state"
 docker_storage_driver_zfs_dataset_name: "layers"
 docker_volume_plugin_zfs_dataset_name: "volumes"
+docker_volume_parent_zfs_dataset_names:
+  - "cache"
+  - "config"
+  - "data"
 
 docker_zfs_plugin_version: "1.1.1"
 docker_zfs_plugin_github_repo: "Panzer1119/docker-zfs-plugin"

@@ -1,3 +1,21 @@
+[{{ docker_zfs_pool_name }}/{{ docker_volume_plugin_zfs_dataset_name }}/cache]
+	use_template = production
+	recursive = zfs
+	frequently = 32
+	hourly = 0
+	daily = 0
+	weekly = 0
+	monthly = 0
+	yearly = 0
+
+[{{ docker_zfs_pool_name }}/{{ docker_volume_plugin_zfs_dataset_name }}/config]
+	use_template = production
+	recursive = zfs
+
+[{{ docker_zfs_pool_name }}/{{ docker_volume_plugin_zfs_dataset_name }}/data]
+	use_template = production
+	recursive = zfs
+
 #############################
 # templates below this line #
 #############################
