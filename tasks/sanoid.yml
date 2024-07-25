@@ -1,10 +1,28 @@
 ---
 # Tasks for installing and configuring Sanoid for ZFS
-- name: Install sanoid debian package
-  ansible.builtin.apt:
-    deb: "https://github.com/{{ sanoid_github_repo }}/releases/download/v{{ sanoid_version }}/sanoid_{{ sanoid_version }}_all.deb"
-    state: present
+- name: Check if Sanoid is installed
+  command: dpkg-query -W sanoid
+  register: sanoid_check_deb
+  failed_when: sanoid_check_deb.rc > 1
+  changed_when: sanoid_check_deb.rc == 1
+
+- name: Download Sanoid
+  get_url:
+    url: "https://github.com/{{ sanoid_github_repo }}/releases/download/v{{ sanoid_version }}/sanoid_{{ sanoid_version }}_all.deb"
+    dest: "/tmp/sanoid_{{ sanoid_version }}_all.deb"
+  when: sanoid_check_deb.rc == 1
+
+- name: Install Sanoid
+  apt:
+    deb: "/tmp/sanoid_{{ sanoid_version }}_all.deb"
+  when: sanoid_check_deb.rc == 1
   become: yes
+
+- name: Remove Sanoid debian package file
+  file:
+    path: "/tmp/sanoid_{{ sanoid_version }}_all.deb"
+    state: absent
+  when: sanoid_check_deb.rc == 1
 
 - name: Configure Sanoid
   template:
