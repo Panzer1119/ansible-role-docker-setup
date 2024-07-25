@@ -13,7 +13,8 @@
   become: yes
 
 - name: Add Docker GPG key if not present
-  command: if [ ! -f /etc/apt/keyrings/docker.asc ]; then curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc; fi
+  ansible.builtin.command:
+    cmd: "test -f /etc/apt/keyrings/docker.asc && curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc || true"
   become: yes
 
 - name: Set permissions of Docker GPG key
