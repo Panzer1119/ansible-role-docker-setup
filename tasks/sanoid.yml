@@ -29,4 +29,4 @@
     src: sanoid.conf.j2
     dest: /etc/sanoid/sanoid.conf
   become: yes
-  notify: "Restart sanoid.timer service"
+  notify: "Start sanoid.timer service"

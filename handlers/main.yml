@@ -8,18 +8,18 @@
     state: restarted
   become: yes
 
-- name: "Restart docker-zfs-plugin service"
+- name: "Start docker-zfs-plugin service"
   systemd:
     daemon_reload: yes
     name: docker-zfs-plugin
     enabled: yes
-    state: restarted
+    state: started
   become: yes
 
-- name: "Restart sanoid.timer service"
+- name: "Start sanoid.timer service"
   systemd:
     daemon_reload: yes
     name: sanoid.timer
     enabled: yes
-    state: restarted
+    state: started
   become: yes
