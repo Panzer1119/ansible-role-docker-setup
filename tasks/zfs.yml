@@ -45,7 +45,7 @@
 
 - name: Download Docker ZFS plugin binary
   get_url:
-    url: "https://github.com/{{ docker_zfs_plugin_github_repo }}/releases/download/{{ docker_zfs_plugin_version }}/docker-zfs-plugin"
+    url: "https://github.com/{{ docker_zfs_plugin_github_repo }}/releases/download/v{{ docker_zfs_plugin_version }}/docker-zfs-plugin"
     dest: /usr/local/bin/docker-zfs-plugin
     mode: '0755'
   when: use_zfs_volume_plugin
