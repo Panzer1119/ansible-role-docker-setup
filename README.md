@@ -23,12 +23,12 @@ ansible-galaxy role install Panzer1119.docker-setup
 
 #### ZFS Storage Driver
 
-- `use_zfs_storage_driver`: Whether to use ZFS as Docker storage driver (default: `false`)
+- `use_zfs_storage_driver`: Whether to use ZFS as Docker storage driver (default: `true`)
 - `docker_storage_driver_zfs_dataset_name`: ZFS dataset for Docker storage (default: `"layers"`)
 
 #### ZFS Volume Plugin
 
-- `use_zfs_volume_plugin`: Whether to use ZFS as Docker volume plugin (default: `false`)
+- `use_zfs_volume_plugin`: Whether to use ZFS as Docker volume plugin (default: `true`)
 - `docker_zfs_plugin_version`: Version of the Docker volume plugin (default: `1.1.1`)
 - `docker_zfs_plugin_github_repo`: GitHub user/repository for the Docker ZFS plugin (default: `Panzer1119/docker-zfs-plugin`)
 - `docker_volume_plugin_zfs_dataset_name`: ZFS dataset for Docker volumes (default: `"volumes"`)
@@ -36,7 +36,7 @@ ansible-galaxy role install Panzer1119.docker-setup
 
 #### Sanoid
 
-- `use_sanoid`: Whether to use Sanoid for ZFS snapshots (default: `false`)
+- `use_sanoid`: Whether to use Sanoid for ZFS snapshots (default: `true`)
 - `sanoid_version`: Version of Sanoid (default: `2.3.1`)
 - `sanoid_github_repo`: GitHub user/repository for Sanoid (default: `Panzer1119/sanoid`)
 

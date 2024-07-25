@@ -4,9 +4,9 @@ user: "panzer1119"
 
 use_gelf_logging: false
 use_full_container_id: false
-use_zfs_storage_driver: false
-use_zfs_volume_plugin: false
-use_sanoid: false
+use_zfs_storage_driver: true
+use_zfs_volume_plugin: true
+use_sanoid: true
 
 gelf_address: "tcp://graylog:12201"
 
