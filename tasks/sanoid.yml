@@ -9,7 +9,7 @@
     install_sanoid: >-
       {{
         ansible_facts.packages[ 'sanoid' ] is not defined or
-        ansible_facts.packages[ 'sanoid' ].length == 0 or
+        len(ansible_facts.packages[ 'sanoid' ]) == 0 or
         ansible_facts.packages[ 'sanoid' ][ 0 ].version != sanoid_version
       }}
 
