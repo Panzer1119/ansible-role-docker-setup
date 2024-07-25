@@ -1,7 +1,8 @@
 ---
 # Tasks for installing and configuring Sanoid for ZFS
-- name: Check if Sanoid is installed (and check with grep for the version)
-  command: "dpkg-query -W sanoid | grep -q '{{ sanoid_version }}' && true || false"
+- name: Check if correct version of Sanoid is installed
+  ansible.builtin.command:
+    cmd: "dpkg-query -W sanoid | grep -q '{{ sanoid_version }}'"
   register: sanoid_check_deb
   failed_when: sanoid_check_deb.rc > 1
   changed_when: sanoid_check_deb.rc == 1
