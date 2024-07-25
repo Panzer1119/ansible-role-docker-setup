@@ -6,10 +6,11 @@
 
 - name: Set install_sanoid variable
   set_fact:
+    # This does not work
+    # ansible_facts.packages[ 'sanoid' ].length == 0 or
     install_sanoid: >-
       {{
         ansible_facts.packages[ 'sanoid' ] is not defined or
-        len(ansible_facts.packages[ 'sanoid' ]) == 0 or
         ansible_facts.packages[ 'sanoid' ][ 0 ].version != sanoid_version
       }}
 
