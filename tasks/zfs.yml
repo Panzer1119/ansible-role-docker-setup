@@ -7,13 +7,13 @@
   become: yes
 
 - name: Check if Docker ZFS pool already exists
-  command: zpool list -Ho name "{{ docker_zfs_pool_name }}"
+  ansible.builtin.command: zpool list -Ho name "{{ docker_zfs_pool_name }}"
   register: result_zpool_list
   ignore_errors: yes
   changed_when: false
 
 - name: Create Docker ZFS Pool (if it does not exist)
-  command: zpool create -f "{{ docker_zfs_pool_name }}" {{ docker_zfs_pool_devices }}
+  ansible.builtin.command: zpool create -f "{{ docker_zfs_pool_name }}" {{ docker_zfs_pool_devices }}
   when: result_zpool_list.rc != 0
   become: yes
 
