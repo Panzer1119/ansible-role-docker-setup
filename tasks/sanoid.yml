@@ -1,5 +1,18 @@
 ---
 # Tasks for installing and configuring Sanoid for ZFS
+- name: Gather the package facts
+  ansible.builtin.package_facts:
+    manager: apt
+
+- name: Print the package facts
+  ansible.builtin.debug:
+    var: ansible_facts.packages
+
+- name: Check whether Sanoid is installed
+  ansible.builtin.debug:
+    msg: "{{ ansible_facts.packages['sanoid'] | length }} versions of sanoid are installed!"
+  when: "'sanoid' in ansible_facts.packages"
+
 - name: Check if correct version of Sanoid is installed
   ansible.builtin.command:
     cmd: "dpkg-query -W sanoid | grep -q '{{ sanoid_version }}'"
