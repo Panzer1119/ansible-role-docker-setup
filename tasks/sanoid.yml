@@ -4,39 +4,32 @@
   ansible.builtin.package_facts:
     manager: apt
 
-- name: Print the package facts
-  ansible.builtin.debug:
-    var: ansible_facts.packages['sanoid']
-
-- name: Check whether Sanoid is installed
-  ansible.builtin.debug:
-    msg: "{{ ansible_facts.packages['sanoid'] | length }} versions of sanoid are installed!"
-  when: "'sanoid' in ansible_facts.packages"
-
-- name: Check if correct version of Sanoid is installed
-  ansible.builtin.command:
-    cmd: "dpkg-query -W sanoid | grep -q '{{ sanoid_version }}'"
-  register: sanoid_check_deb
-  failed_when: sanoid_check_deb.rc > 1
-  changed_when: sanoid_check_deb.rc == 1
+- name: Set install_sanoid variable
+  set_fact:
+    install_sanoid: >-
+      {{
+        ansible_facts.packages[ 'sanoid' ] is not defined or
+        ansible_facts.packages[ 'sanoid' ].length == 0 or
+        ansible_facts.packages[ 'sanoid' ][ 0 ].version != sanoid_version
+      }}
 
 - name: Download Sanoid
   get_url:
     url: "https://github.com/{{ sanoid_github_repo }}/releases/download/v{{ sanoid_version }}/sanoid_{{ sanoid_version }}_all.deb"
     dest: "/tmp/sanoid_{{ sanoid_version }}_all.deb"
-  when: sanoid_check_deb.rc == 1
+  when: install_sanoid
 
 - name: Install Sanoid
   apt:
     deb: "/tmp/sanoid_{{ sanoid_version }}_all.deb"
-  when: sanoid_check_deb.rc == 1
+  when: install_sanoid
   become: yes
 
 - name: Remove Sanoid debian package file
   file:
     path: "/tmp/sanoid_{{ sanoid_version }}_all.deb"
     state: absent
-  when: sanoid_check_deb.rc == 1
+  when: install_sanoid
 
 - name: Configure Sanoid
   template:
