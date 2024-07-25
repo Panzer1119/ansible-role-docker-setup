@@ -14,8 +14,8 @@ ansible-galaxy role install Panzer1119.docker-setup
 ### Logging
 
 - `use_gelf_logging`: Whether to use GELF logging driver (default: `false`)
-- `gelf_address`: Address for GELF logging driver (default: `"tcp://graylog:12201"`)
 - `use_full_container_id`: Whether to use full container ID in Docker log messages (default: `false`)
+- `gelf_address`: Address for GELF logging driver (default: `"tcp://graylog:12201"`)
 
 ### ZFS
 
