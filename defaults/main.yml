@@ -23,5 +23,5 @@ docker_volume_parent_zfs_dataset_names:
 docker_zfs_plugin_version: "1.1.1"
 docker_zfs_plugin_github_repo: "Panzer1119/docker-zfs-plugin"
 
-sanoid_version: "2.3.1"
+sanoid_version: "2.3.2"
 sanoid_github_repo: "Panzer1119/sanoid"
