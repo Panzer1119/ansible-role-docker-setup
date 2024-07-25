@@ -13,10 +13,11 @@
   become: yes
 
 - name: Add Docker GPG key
-  ansible.builtin.apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    state: present
-    keyring: /etc/apt/keyrings/docker.asc
+  command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  become: yes
+
+- name: Add permissions to Docker GPG key
+  command: chmod a+r /etc/apt/keyrings/docker.asc
   become: yes
 
 - name: Add Docker repository
