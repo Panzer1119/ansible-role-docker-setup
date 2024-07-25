@@ -1,7 +1,7 @@
 ---
 # Tasks for installing and configuring ZFS for Docker
 - name: Install ZFS utilities
-  apt:
+  ansible.builtin.apt:
     name: zfsutils-linux
     state: present
   become: yes
