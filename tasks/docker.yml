@@ -12,12 +12,14 @@
     state: present
   become: yes
 
-- name: Add Docker GPG key
-  command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+- name: Add Docker GPG key if not present
+  command: if [ ! -f /etc/apt/keyrings/docker.asc ]; then curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc; fi
   become: yes
 
-- name: Add permissions to Docker GPG key
-  command: chmod a+r /etc/apt/keyrings/docker.asc
+- name: Set permissions of Docker GPG key
+  file:
+    path: /etc/apt/keyrings/docker.asc
+    mode: '0644'
   become: yes
 
 - name: Add Docker repository
