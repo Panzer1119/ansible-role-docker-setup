@@ -2,7 +2,8 @@
   "log-driver": "{{ 'gelf' if use_gelf_logging else 'json-file' }}"{% if use_gelf_logging or use_full_container_id %},
   "log-opts": {
 {% if use_gelf_logging %}
-    "gelf-address": "{{ gelf_address }}"{% if use_full_container_id %},{% endif %}
+    "gelf-address": "{{ gelf_address }}"{% if use_full_container_id %},
+{% endif %}
 {% endif %}
 {% if use_full_container_id %}
     "tag": "{{ '{{.FullID}}' }}"
@@ -11,5 +12,6 @@
   "storage-driver": "zfs",
   "storage-opts": [
     "zfs.fsname={{ docker_zfs_pool_name }}/{{ docker_storage_driver_zfs_dataset_name }}"
-  ]{% endif %}
+  ]
+{% endif %}
 }
