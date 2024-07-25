@@ -15,3 +15,11 @@
     enabled: yes
     state: restarted
   become: yes
+
+- name: "Restart sanoid.timer service"
+  systemd:
+    daemon_reload: yes
+    name: sanoid.timer
+    enabled: yes
+    state: restarted
+  become: yes

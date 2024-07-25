@@ -1,6 +1,7 @@
 # Ansible Role: Docker Setup
 
-This Ansible role installs and configures Docker with optional ZFS and logging configurations.
+This Ansible role installs and configures Docker with optional ZFS storage driver and logging configurations.
+And it can also install the ZFS volume plugin and Sanoid for ZFS snapshots.
 
 ## Installation
 
@@ -31,6 +32,12 @@ ansible-galaxy role install Panzer1119.docker-setup
 - `docker_zfs_plugin_version`: Version of the Docker volume plugin (default: `1.1.1`)
 - `docker_zfs_plugin_github_repo`: GitHub user/repository for the Docker ZFS plugin (default: `Panzer1119/docker-zfs-plugin`)
 - `docker_volume_plugin_zfs_dataset_name`: ZFS dataset for Docker volumes (default: `"volumes"`)
+
+#### Sanoid
+
+- `use_sanoid`: Whether to use Sanoid for ZFS snapshots (default: `false`)
+- `sanoid_version`: Version of Sanoid (default: `2.3.1`)
+- `sanoid_github_repo`: GitHub user/repository for Sanoid (default: `Panzer1119/sanoid`)
 
 ## Example Playbook
 

@@ -6,6 +6,7 @@ use_gelf_logging: false
 use_full_container_id: false
 use_zfs_storage_driver: false
 use_zfs_volume_plugin: false
+use_sanoid: false
 
 gelf_address: "tcp://graylog:12201"
 
@@ -17,3 +18,6 @@ docker_volume_plugin_zfs_dataset_name: "volumes"
 
 docker_zfs_plugin_version: "1.1.1"
 docker_zfs_plugin_github_repo: "Panzer1119/docker-zfs-plugin"
+
+sanoid_version: "2.3.1"
+sanoid_github_repo: "Panzer1119/sanoid"

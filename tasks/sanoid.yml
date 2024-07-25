@@ -1,0 +1,14 @@
+---
+# Tasks for installing and configuring Sanoid for ZFS
+- name: Install sanoid debian package
+  ansible.builtin.apt:
+    deb: "https://github.com/{{ sanoid_github_repo }}/releases/download/v{{ sanoid_version }}/sanoid_{{ sanoid_version }}_all.deb"
+    state: present
+  become: yes
+
+- name: Configure Sanoid
+  template:
+    src: sanoid.conf.j2
+    dest: /etc/sanoid/sanoid.conf
+  become: yes
+  notify: "Restart sanoid.timer service"
