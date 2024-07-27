@@ -32,7 +32,7 @@ ansible-galaxy role install Panzer1119.docker-setup
 - `docker_zfs_plugin_version`: Version of the Docker volume plugin (default: `1.1.1`)
 - `docker_zfs_plugin_github_repo`: GitHub user/repository for the Docker ZFS plugin (default: `Panzer1119/docker-zfs-plugin`)
 - `docker_volume_plugin_zfs_dataset_name`: ZFS dataset for Docker volumes (default: `"volumes"`)
-- `docker_volume_parent_zfs_dataset_names`: List of ZFS dataset names for Docker volume parents (default: `["cache", "config", "data"]`)
+- `docker_volume_parent_zfs_dataset_names`: List of ZFS dataset names for Docker volume parents (default: `["cache", "backup", "config", "data"]`)
 
 #### Sanoid
 

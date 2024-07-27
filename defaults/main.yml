@@ -18,6 +18,7 @@ docker_storage_driver_zfs_dataset_name: "layers"
 docker_volume_plugin_zfs_dataset_name: "volumes"
 docker_volume_parent_zfs_dataset_names:
   - "cache"
+  - "backup"
   - "config"
   - "data"
 
