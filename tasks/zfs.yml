@@ -62,7 +62,7 @@
   become: yes
 
 - name: Configure Docker ZFS plugin service
-  template:
+  ansible.builtin.template:
     src: docker-zfs-plugin.service.j2
     dest: /etc/systemd/system/docker-zfs-plugin.service
   when: use_zfs_volume_plugin

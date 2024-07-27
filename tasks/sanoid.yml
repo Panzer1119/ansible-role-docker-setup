@@ -33,7 +33,7 @@
   when: install_sanoid
 
 - name: Configure Sanoid
-  template:
+  ansible.builtin.template:
     src: sanoid.conf.j2
     dest: /etc/sanoid/sanoid.conf
   become: yes
