@@ -11,6 +11,10 @@ ansible-galaxy role install Panzer1119.docker-setup
 
 ## Variables
 
+### Docker
+
+- `use_docker`: Whether to install Docker (default: `true`)
+
 ### Logging
 
 - `use_gelf_logging`: Whether to use GELF logging driver (default: `false`)
@@ -39,6 +43,7 @@ ansible-galaxy role install Panzer1119.docker-setup
 - `use_sanoid`: Whether to use Sanoid for ZFS snapshots (default: `true`)
 - `sanoid_version`: Version of Sanoid (default: `2.3.1`)
 - `sanoid_github_repo`: GitHub user/repository for Sanoid (default: `Panzer1119/sanoid`)
+- `sanoid_skip_configuration`: Whether to skip Sanoid configuration (default: `false`)
 
 ## Example Playbook
 
