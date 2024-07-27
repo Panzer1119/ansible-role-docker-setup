@@ -4,6 +4,10 @@
   ansible.builtin.package_facts:
     manager: apt
 
+- name: Print the sanoid package facts
+  ansible.builtin.debug:
+    var: ansible_facts.packages['sanoid']
+
 - name: Set install_sanoid variable
   set_fact:
     # This does not work
