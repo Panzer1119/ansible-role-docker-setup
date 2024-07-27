@@ -21,7 +21,7 @@
   when: install_sanoid
 
 - name: Install Sanoid
-  apt:
+  ansible.builtin.apt:
     deb: "/tmp/sanoid_{{ sanoid_version }}_all.deb"
   when: install_sanoid
   become: yes
