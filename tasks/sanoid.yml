@@ -40,5 +40,6 @@
   ansible.builtin.template:
     src: sanoid.conf.j2
     dest: /etc/sanoid/sanoid.conf
+  when: not sanoid_skip_configuration
   become: yes
   notify: "Start sanoid.timer service"

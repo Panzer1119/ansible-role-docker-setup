@@ -25,3 +25,4 @@ docker_zfs_plugin_github_repo: "Panzer1119/docker-zfs-plugin"
 
 sanoid_version: "2.3.2"
 sanoid_github_repo: "Panzer1119/sanoid"
+sanoid_skip_configuration: false
