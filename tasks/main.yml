@@ -7,3 +7,4 @@
   when: use_sanoid
 
 - include_tasks: docker.yml
+  when: use_docker
