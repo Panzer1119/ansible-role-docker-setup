@@ -1,7 +1,7 @@
 ---
 # Handlers for Docker setup
 - name: "Restart docker service"
-  systemd:
+  ansible.builtin.systemd:
     daemon_reload: yes
     name: docker
     enabled: yes
@@ -9,7 +9,7 @@
   become: yes
 
 - name: "Start docker-zfs-plugin service"
-  systemd:
+  ansible.builtin.systemd:
     daemon_reload: yes
     name: docker-zfs-plugin
     enabled: yes
@@ -17,7 +17,7 @@
   become: yes
 
 - name: "Start sanoid.timer service"
-  systemd:
+  ansible.builtin.systemd:
     daemon_reload: yes
     name: sanoid.timer
     enabled: yes
